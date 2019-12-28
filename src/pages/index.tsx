@@ -1,11 +1,21 @@
 import React from 'react';
 import styles from './index.css';
 import { connect } from 'dva'
-import { List, Button } from 'antd';
+import { List, Button, Alert } from 'antd';
 import 'antd/dist/antd.css'
 
 const Main = ({ dispatch, main, data }) => {
-  const Player = () => <div>我想要一个<span>{main.target}</span>,现在我有一个<span>{main.text}</span>,我想我可以用它交换到...... </div>
+  const Player = () => {
+    if (main.value === 63) {
+      return (
+        <Alert message='你得到了别墅!' type="success" showIcon />
+      )
+    }
+    return (
+      <div>你想要一个<span>{main.target}</span>,现在我有一个<span>{main.text}</span>,我想我可以用它交换到...... </div>
+    )
+
+  }
   const change = (item: { index: number; value: number; text: string; }) => {
     const dataChange = { index: item.index, value: main.value, text: main.text }
     const mainChange = item
@@ -22,10 +32,10 @@ const Main = ({ dispatch, main, data }) => {
   const listRenderItem = (item: { index: number; value: number; text: string; }) => {
     {
       const show = main.value - item.value
-      const showBool = [5, 3, 2, 1, 0, -1, -2].indexOf(show) === -1;
+      const disabled = ([7, 5, 2, 0, -1, -3].indexOf(show) === -1) || main.value === 63;
       return (
         <List.Item className="item-btn" >
-          <Button type="primary" disabled={showBool} block onClick={() => { change(item) }}>{item.text} </Button>
+          <Button type="primary" disabled={disabled} block onClick={() => { change(item) }}>{item.text} </Button>
         </List.Item>
       )
     }
