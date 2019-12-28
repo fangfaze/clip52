@@ -1,10 +1,81 @@
+import { valueToNode } from '@babel/types';
+
 export default {
     namespage: "data",
     state: {
         list:
-            [{ value: 1, change: true, text: '刀片' },
-            { value: 2, change: false, text: '别墅' }]
+            [
+                { index: 0, value: 63, text: '别墅' },
+                { index: 1, value: 45, text: '手机' },
+                { index: 2, value: 6, text: '大头贴' },
+                { index: 3, value: 17, text: '口哨' },
+                { index: 4, value: 8, text: '痒痒挠' },
+                { index: 5, value: 35, text: '手推车' },
+                { index: 6, value: 61, text: '青花瓷瓶' },
+                { index: 7, value: 55, text: '奥运金牌' },
+                { index: 8, value: 38, text: '围棋' },
+                { index: 9, value: 39, text: '飞天茅台酒瓶' },
+                { index: 10, value: 9, text: '铅笔' },
+                { index: 11, value: 31, text: '遥控器' },
+                { index: 12, value: 34, text: '闹表' },
+                { index: 13, value: 3, text: '挖耳勺' },
+                { index: 14, value: 47, text: '剑齿虎的牙齿' },
+                { index: 15, value: 62, text: '游艇' },
+                { index: 16, value: 36, text: '幽灵船长帽' },
+                { index: 17, value: 58, text: '大象' },
+                { index: 18, value: 59, text: '抹香鲸' },
+                { index: 19, value: 24, text: '团扇' },
+                { index: 20, value: 5, text: '瓶装水' },
+                { index: 21, value: 16, text: '筷子' },
+                { index: 22, value: 21, text: '悠悠球' },
+                { index: 23, value: 14, text: '香肠' },
+                { index: 24, value: 53, text: '纪念版篮球鞋' },
+                { index: 25, value: 2, text: '扣子' },
+                { index: 26, value: 52, text: '虚拟货币' },
+                { index: 27, value: 25, text: '凉皮夹馍' },
+                { index: 28, value: 48, text: '扫地机器人' },
+                { index: 29, value: 50, text: '演唱会门票' },
+                { index: 30, value: 20, text: '四星龙珠' },
+                { index: 31, value: 19, text: '健美杂志' },
+                { index: 32, value: 54, text: '天文望远镜' },
+                { index: 33, value: 29, text: '领结' },
+                { index: 34, value: 43, text: '高跟鞋' },
+                { index: 35, value: 51, text: '香水' },
+                { index: 36, value: 37, text: '切片标本' },
+                { index: 37, value: 60, text: '卡车' },
+                { index: 38, value: 49, text: '摇摇虎' },
+                { index: 39, value: 15, text: '金针菇' },
+                { index: 40, value: 57, text: '摩托车' },
+                { index: 41, value: 10, text: '芥末' },
+                { index: 42, value: 28, text: '哑铃' },
+                { index: 43, value: 4, text: '纸巾' },
+                { index: 44, value: 7, text: '豆芽菜' },
+                { index: 45, value: 13, text: '醋' },
+                { index: 46, value: 12, text: '棒棒糖' },
+                { index: 47, value: 30, text: '按摩棒' },
+                { index: 48, value: 22, text: '脑残片' },
+                { index: 49, value: 41, text: '水晶吊坠' },
+                { index: 50, value: 18, text: '手套' },
+                { index: 51, value: 1, text: '口香糖' },
+                { index: 52, value: 56, text: '吉他' },
+                { index: 53, value: 26, text: '芝士' },
+                { index: 54, value: 33, text: '加湿器' },
+                { index: 55, value: 27, text: '咖啡' },
+                { index: 56, value: 40, text: '电子计算器' },
+                { index: 57, value: 32, text: '呼啦圈' },
+                { index: 58, value: 42, text: '电风扇' },
+                { index: 59, value: 44, text: '西服' },
+                { index: 60, value: 46, text: '无线电发报机' },
+                { index: 61, value: 23, text: '香烟' },
+                { index: 62, value: 11, text: '花椒面' },
+            ]
     },
     reducers: {
+        change(state: any, action: any) {
+            const { index, value, text } = action.playload
+            const list = state.list
+            list[index] = { index: index, value: value, text: text }
+            return { list: list }
+        },
     }
 }
